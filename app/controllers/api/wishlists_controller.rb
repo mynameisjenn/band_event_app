@@ -24,7 +24,7 @@ class Api::WishlistsController < ApplicationController
 	def destroy
 		@wishlist = Wishlist.find(params[:id])
 		@wishlist.destroy
-		render json: { message: "Wishlist has been removed."}, 
+		render json: { message: "Wishlist has been removed."}
 	end
-	
+
 end
