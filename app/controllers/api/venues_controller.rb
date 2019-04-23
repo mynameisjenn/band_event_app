@@ -1,7 +1,7 @@
 class Api::VenuesController < ApplicationController
 
   def index
-    @venues = Venues.all 
+    @venues = Venue.all 
     render 'index.json.jbuilder'
   end
 
