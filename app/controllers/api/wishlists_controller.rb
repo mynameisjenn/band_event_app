@@ -11,7 +11,7 @@ class Api::WishlistsController < ApplicationController
 	end
 
 	def create
-		@wishlist = Wishlist.create (
+		@wishlist = Wishlist.new(
 									 event_id: params[:event_id],
 									 user_id: params[:user_id]
 									)
