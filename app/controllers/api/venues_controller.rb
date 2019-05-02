@@ -17,10 +17,11 @@ class Api::VenuesController < ApplicationController
                       address: params[:address],
                       venue_name: params[:venue_name] 
                       )
-  if @venue.save
-    render json { message: "Venue has been added."}, status: :created
-  else
-    render json { message: "@venue.errors.full_messages"}, status: :bad_request
+    if @venue.save
+      render json: { message: "Venue has been added."}, status: :created
+    else
+      render json: { message: "@venue.errors.full_messages"}, status: :bad_request
+    end
   end
 
   def destroy

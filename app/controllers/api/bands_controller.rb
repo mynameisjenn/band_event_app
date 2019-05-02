@@ -16,10 +16,11 @@ class Api::BandsController < ApplicationController
                      description: params[:description],
                      picture_url: params[:picture_url]
                     )
-  if @band.save
+    if @band.save(validate: false)
       render json: { message: "Your band have been added"}, status: :created
-  else
+    else
       render json: { message: @band.errors.full_messages}, status: :bad_request
+    end  
   end
 
   def destroy
