@@ -13,10 +13,11 @@ class Api::UsersController < ApplicationController
                     password_confirmation: params[:password_confirmation]
                     )
     if @user.save
-      render json: {message: "Your profile was created"},status: :created
+      render json: { message: "Your profile was created"},status: :created
     else
-      render json: {message: @user.errors.full_messages},status: :bad_request
+      render json: { message: @user.errors.full_messages},status: :bad_request
     end
+  end
 
   def update 
     user_id = params[:id]
@@ -33,3 +34,5 @@ class Api::UsersController < ApplicationController
     @user.destroy
     render json:{message: "Successfully deleted user"}
   end
+
+end

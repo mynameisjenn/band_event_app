@@ -12,13 +12,14 @@ class Api::WishlistsController < ApplicationController
 
 	def create
 		@wishlist = Wishlist.new(
-									 event_id: params[:event_id],
-									 user_id: params[:user_id]
-									)
-	if @wishlist.save
-		render json: { message: "Wishlist has been created."}, status: :created
-	else
-		render json: { message: @wishlist.errors.full_messages}, status: :bad_request
+								  event_id: params[:event_id],
+								  user_id: params[:user_id]
+								)
+		if @wishlist.save
+			render json: { message: "Wishlist has been created."}, status: :created
+		else
+			render json: { message: @wishlist.errors.full_messages}, status: :bad_request
+		end
 	end
 
 	def destroy
