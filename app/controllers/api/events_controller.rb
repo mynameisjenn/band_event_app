@@ -1,7 +1,13 @@
+require 'unirest'
+
 class Api::EventsController < ApplicationController
 
 	def index
-		@events = Event.all
+		## added the bandsintown api
+		response = Unirest.get("https://rest.bandsintown.com/artists/Only%20The%20Bones/events?app_id=2ced7eb7fa5fea95e3febaceda106ed5&date=past")
+		@event_info = response.body
+		
+		# @events = Event.all
 		render 'index.json.jbuilder'
 	end
 
