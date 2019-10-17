@@ -3,10 +3,23 @@ require 'unirest'
 class Api::EventsController < ApplicationController
 
 	def index
-		## added the bandsintown api
-		response = Unirest.get("https://rest.bandsintown.com/artists/Only%20The%20Bones/events?app_id=2ced7eb7fa5fea95e3febaceda106ed5&date=past")
+		## added the seatgeek api
+		response = Unirest.get("https://api.seatgeek.com/2/events?client_id=")
 		@event_info = response.body
-		
+		@event_hash = @event_info["events"]
+
+		# event_hash.each do |event|
+		# 	puts "#{event["id"]}"
+		# end
+
+		# @event_info.each do |event|
+		# 	p event
+		# end
+
+		# people.each do |person|
+  # 			puts "#{person[:name]}: #{person[:occupation]}"
+		# end
+
 		# @events = Event.all
 		render 'index.json.jbuilder'
 	end
